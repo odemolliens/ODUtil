@@ -1,9 +1,9 @@
 //
-//  UIDeviceUtil.h
+//  ODDeviceUtil.h
 //  ostalgo
 //
-//  Created by Olivier Demolliens on 15/09/11.
-//  Copyright 2011 ostalgo. All rights reserved.
+//  Created by Olivier Demolliens on 30/04/11.
+//  Copyright 2010 company. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

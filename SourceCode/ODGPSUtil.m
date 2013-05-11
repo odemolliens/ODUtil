@@ -1,9 +1,9 @@
 //
-//  GoogleApiUtil.m
+//  ODGPSUtil.m
 //  ostalgo
 //
-//  Created by user on 25/04/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Olivier Demolliens on 30/04/11.
+//  Copyright 2010 company. All rights reserved.
 //
 
 #import "ODGPSUtil.h"

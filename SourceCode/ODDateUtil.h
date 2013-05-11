@@ -1,8 +1,8 @@
 //
-//  DateUtil.h
+//  ODDateUtil.h
 //  ostalgo
 //
-//  Created by company on 30/04/11.
+//  Created by Olivier Demolliens on 30/04/11.
 //  Copyright 2010 company. All rights reserved.
 //
 
