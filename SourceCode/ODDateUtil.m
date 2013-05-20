@@ -8,19 +8,9 @@
 
 #import "ODDateUtil.h"
 
-#import "LanguageService.h"
-
 
 @implementation ODDateUtil
 
-
-+(NSDate*)getLocalDateFromString:(NSString*)dateString
-{
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setDateFormat:[LanguageService getString:@"FormatedDateOnly-JJ-MM-AAAA-HH-MM-SS" withComment:@"FormattedDate"]]; 
-    
-    return [dateFormatter dateFromString:dateString];
-}
 
 /* General Method */
 

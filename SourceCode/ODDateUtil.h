@@ -15,9 +15,6 @@
 
 @interface ODDateUtil : NSObject
 
-//Methods - Local
-+(NSDate*)getLocalDateFromString:(NSString*)dateString;
-
 //Methods - Return NSString
 +(NSString*)getHourFromDate:(NSDate*)date;
 +(NSString*)getMinuteFromDate:(NSDate*)date;
