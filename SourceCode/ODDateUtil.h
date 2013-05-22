@@ -61,6 +61,7 @@
 //Methods - Return NSInteger
 +(NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 +(NSInteger)hoursBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
++(NSInteger)secondBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 +(NSDecimalNumber*)addDuration:(NSDate*)date;
 
 @end

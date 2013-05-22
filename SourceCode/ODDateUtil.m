@@ -429,6 +429,24 @@
     return [difference hour];
 }
 
++ (NSInteger)secondBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
+{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:fromDateTime];
+    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&toDate
+                 interval:NULL forDate:toDateTime];
+    
+    NSDateComponents *difference = [calendar components:NSHourCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference second];
+}
+
 
 +(BOOL)day:(NSDate*)date1 isLaterThanOrEqualTo:(NSDate*)date2 {
 	return !([date1 compare:date2] == NSOrderedAscending);
