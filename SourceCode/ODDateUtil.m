@@ -96,6 +96,15 @@
 	return newDate;
 }
 
++(NSDate*)addAtThisDate:(NSDate*)date minutes:(NSInteger)minutes
+{
+	NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
+	components.minute = (int)minutes;
+	NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:date options:0];
+	
+	return newDate;
+}
+
 /*
  Get the previousDay
  */
@@ -431,20 +440,10 @@
 
 + (NSInteger)secondBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
-    NSDate *fromDate;
-    NSDate *toDate;
     
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSTimeInterval interval = [fromDateTime timeIntervalSinceDate:toDateTime];
     
-    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&fromDate
-                 interval:NULL forDate:fromDateTime];
-    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&toDate
-                 interval:NULL forDate:toDateTime];
-    
-    NSDateComponents *difference = [calendar components:NSHourCalendarUnit
-                                               fromDate:fromDate toDate:toDate options:0];
-    
-    return [difference second];
+    return (int)interval;
 }
 
 

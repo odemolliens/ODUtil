@@ -51,6 +51,7 @@
 +(NSDate*)getNextDay:(NSDate*)date;
 +(NSDate*)getPreviousDay:(NSDate*)date;
 +(NSDate*)addAtThisDate:(NSDate*)date day:(NSInteger)numberOfDay;
++(NSDate*)addAtThisDate:(NSDate*)date minutes:(NSInteger)minutes;
 +(NSDate*)getDateDuration:(NSInteger)value;
 
 
