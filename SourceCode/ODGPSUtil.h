@@ -20,7 +20,7 @@
 }
 
 //Old version (ios<6)
-+(void)showMapWithStart:(MKMapView*)mapView ToGo:(NSDecimalNumber*)eLongi and:(NSDecimalNumber*)eLat;
++(void)showMapWithStart:(MKMapView*)mapView ToGo:(NSDecimalNumber*)eLongi and:(NSDecimalNumber*)eLat __attribute__((deprecated));
 
 //Apple Maps App
 +(void)showMapWithAppleMaps:(MKMapView*)mapView ToGo:(NSDecimalNumber*)eLongi and:(NSDecimalNumber*)eLat;
