@@ -33,12 +33,12 @@ UIImage+ODCached
 Draw an image and cached it !
 
 ```c
-UIImage cacheDrawedImage:^(UIImage *image){
+[UIImage cacheDrawedImage:^(UIImage *image){
 	//Return drawed image
         return [UIImage imageNamed:@""];
     }
-    			    //ImageName
-                            withName:@""
-                            //CacheImageName
-                       withCacheName:@""];
+    //ImageName
+    withName:@""
+    //CacheImageName
+    withCacheName:@""];
 ```
