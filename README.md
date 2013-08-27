@@ -31,3 +31,14 @@ UIImage+ODCached
 =======
 
 Draw an image and cached it !
+
+```c
+UIImage cacheDrawedImage:^(UIImage *image){
+	//Return drawed image
+        return [UIImage imageNamed:@""];
+    }
+    			    //ImageName
+                            withName:@""
+                            //CacheImageName
+                       withCacheName:@""];
+```
