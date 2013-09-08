@@ -10,6 +10,16 @@
 
 @interface UIImage (ODCached)
 
+/** manual load image **/
++(UIImage*)imageWithName:(NSString*)imageNa;
+
+/** load from cache folder **/
++(UIImage*)imageFromLibraryWithName:(NSString*)imageNa;
+
+/** load with drawed image **/
++(UIImage*)cacheDrawedNewImage:(UIImage* (^)(void))imgHandler withName:(NSString*)imageNa withCacheName:(NSString*)cacheName;
+
+/** load with existing image**/
 +(UIImage*)cacheDrawedImage:(UIImage* (^) (UIImage *imageToDraw))imgHandler withName:(NSString*)imageNa withCacheName:(NSString*)cacheName;
 
 @end
