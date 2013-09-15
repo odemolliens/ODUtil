@@ -60,6 +60,10 @@
     
     NSData *data = [NSData dataWithContentsOfFile:pngPath];
     
+    if (!data) {
+        return nil;
+    }
+    
     CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
     
     return [UIImage imageWithData:data scale:scale];
@@ -158,12 +162,12 @@
         
         if (!filePath) {
             filePath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",imageNa]];
-            NSLog(@"image doesn't exist in BUNDLE:%@ load now:%@",realImageName,filePath);
+            //NSLog(@"image doesn't exist in BUNDLE:%@ load now:%@",realImageName,filePath);
             
             data = [NSData dataWithContentsOfFile:filePath];
             
             if (!data) {
-                NSLog(@"image doesn't exist in Library:%@ load now:%@",realImageName,filePath);
+                //NSLog(@"image doesn't exist in Library:%@ load now:%@",realImageName,filePath);
                 return nil;
             }
         }else{
@@ -192,7 +196,7 @@
                 return nil;
             }
         }else {
-            NSLog(@"save failed");
+            //NSLog(@"save failed");
             return nil;
         }
     }
