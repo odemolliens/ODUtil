@@ -16,6 +16,8 @@
 /** load from cache folder **/
 +(UIImage*)imageFromLibraryWithName:(NSString*)imageNa;
 
++(UIImage*)imageFromLibraryWithoutResolution:(NSString*)imageNa;
+
 /** load with drawed image **/
 +(UIImage*)cacheDrawedNewImage:(UIImage* (^)(void))imgHandler withName:(NSString*)imageNa withCacheName:(NSString*)cacheName;
 

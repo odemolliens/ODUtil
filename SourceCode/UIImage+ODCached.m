@@ -38,6 +38,33 @@
     return [UIImage imageWithData:data scale:scale];
 }
 
++(UIImage*)imageFromLibraryWithoutResolution:(NSString*)imageNa
+{
+    NSString *realImageName = @"";
+    
+    realImageName = [NSString stringWithFormat:@"%@.png",imageNa];
+    
+    NSString *libraryPath = [self libraryDirectory];
+    
+    NSString *cachePath = [libraryPath stringByAppendingPathComponent:kIMageCachePath];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:cachePath]) {
+        [self createDirectory:kIMageCachePath atFilePath:libraryPath];
+    }
+    
+    NSString *pngPath = [cachePath stringByAppendingPathComponent:realImageName];
+    
+    NSData *data = [NSData dataWithContentsOfFile:pngPath];
+    
+    if (!data) {
+        return nil;
+    }
+    
+    CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
+    
+    return [UIImage imageWithData:data scale:scale];
+}
+
 +(UIImage*)imageFromLibraryWithName:(NSString*)imageNa
 {
     NSString *realImageName = @"";
