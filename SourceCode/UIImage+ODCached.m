@@ -12,12 +12,21 @@
 
 #define kIMageCachePath @"imageCacheFolder"
 
+static NSCache *_imageCache = nil;
+
 @implementation UIImage (ODCached)
 
 +(UIImage*)imageWithName:(NSString*)imageNa
 {
-    NSString *realImageName = @"";
     
+    UIImage *image = [UIImage imageFromCacheWithName:imageNa];
+    
+    if(image!=NULL) {
+        return image;
+    }
+    
+    NSString *realImageName = @"";
+
     if ([ODDeviceUtil isRetina]) {
         realImageName = [NSString stringWithFormat:@"%@@2x",imageNa];
     }else{
@@ -29,17 +38,28 @@
     if (!filePath) {
         return nil;
     }else{
+        
     }
     
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     
     CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
     
-    return [UIImage imageWithData:data scale:scale];
+    image = [UIImage imageWithData:data scale:scale];
+    
+    [UIImage storeImageinCache:image withName:imageNa];
+    
+    return image;
 }
 
 +(UIImage*)imageFromLibraryWithoutResolution:(NSString*)imageNa
 {
+    UIImage *image = [UIImage imageFromCacheWithName:imageNa];
+    
+    if(image!=NULL) {
+        return image;
+    }
+    
     NSString *realImageName = @"";
     
     realImageName = [NSString stringWithFormat:@"%@.png",imageNa];
@@ -62,11 +82,21 @@
     
     CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
     
-    return [UIImage imageWithData:data scale:scale];
+    image = [UIImage imageWithData:data scale:scale];
+    
+    [UIImage storeImageinCache:image withName:imageNa];
+    
+    return image;
 }
 
 +(UIImage*)imageFromLibraryWithName:(NSString*)imageNa
 {
+    UIImage *image = [UIImage imageFromCacheWithName:imageNa];
+    
+    if(image!=NULL) {
+        return image;
+    }
+    
     NSString *realImageName = @"";
     
     if ([ODDeviceUtil isRetina]) {
@@ -93,7 +123,11 @@
     
     CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
     
-    return [UIImage imageWithData:data scale:scale];
+    image = [UIImage imageWithData:data scale:scale];
+    
+    [UIImage storeImageinCache:image withName:imageNa];
+    
+    return image;
 }
 
 +(UIImage*)cacheDrawedNewImage:(UIImage* (^)(void))imgHandler  withName:(NSString*)imageNa withCacheName:(NSString*)cacheName
@@ -246,6 +280,34 @@
     {
         NSLog(@"Create directory error: %@", error);
     }
+}
+
++ (NSCache *)currentCacheImage {
+    if(_imageCache==nil) {
+        
+        _imageCache = [[NSCache alloc] init];
+        [_imageCache setName:@"custom_cache_image"];
+    }
+    
+    return [[_imageCache retain] autorelease];
+}
+
++ (UIImage *)imageFromCacheWithName:(NSString *)imageName {
+    NSCache *currentCacheImage = [UIImage currentCacheImage];
+    
+    return [currentCacheImage objectForKey:imageName];
+}
+
++ (void)storeImageinCache:(UIImage *)image withName:(NSString *)imageName {
+    NSCache *currentCacheImage = [UIImage currentCacheImage];
+    
+    CGSize imageSize = [image size];
+    
+    NSUInteger cost = imageSize.height * imageSize.width * [image scale];
+    
+    [currentCacheImage setObject:image
+                          forKey:imageName
+                            cost:cost];
 }
 
 @end
