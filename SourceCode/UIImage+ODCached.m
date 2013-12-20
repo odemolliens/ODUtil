@@ -26,7 +26,7 @@ static NSCache *_imageCache = nil;
     }
     
     NSString *realImageName = @"";
-
+    
     if ([ODDeviceUtil isRetina]) {
         realImageName = [NSString stringWithFormat:@"%@@2x",imageNa];
     }else{
@@ -156,7 +156,9 @@ static NSCache *_imageCache = nil;
         
         CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
         
-        return [UIImage imageWithData:data scale:scale];
+        UIImage *image = [UIImage imageWithData:data scale:scale];
+        [UIImage storeImageinCache:image withName:imageName];
+        return image;
         
     }else{
         //Not exist, draw and write it in image cache folder.
@@ -171,6 +173,7 @@ static NSCache *_imageCache = nil;
                 
                 CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
                 
+                [UIImage storeImageinCache:image withName:imageName];
                 return [UIImage imageWithData:data scale:scale];
             }else{
                 return nil;
@@ -212,7 +215,9 @@ static NSCache *_imageCache = nil;
         
         CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
         
-        return [UIImage imageWithData:data scale:scale];
+        UIImage *image = [UIImage imageWithData:data scale:scale];
+        [UIImage storeImageinCache:image withName:imageName];
+        return image;
         
     }else{
         //Not exist, draw and write it in image cache folder.
@@ -251,6 +256,8 @@ static NSCache *_imageCache = nil;
                 NSData *data = [NSData dataWithContentsOfFile:pngPath];
                 
                 CGFloat scale = [ODDeviceUtil isRetina] ? 2.0:1.0;
+                
+                [UIImage storeImageinCache:image withName:imageName];
                 
                 return [UIImage imageWithData:data scale:scale];
             }else{
