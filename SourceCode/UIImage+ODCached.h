@@ -24,4 +24,10 @@
 /** load with existing image**/
 +(UIImage*)cacheDrawedImage:(UIImage* (^) (UIImage *imageToDraw))imgHandler withName:(NSString*)imageNa withCacheName:(NSString*)cacheName;
 
+
+
++ (NSCache *)currentCacheImage;
++ (UIImage *)imageFromCacheWithName:(NSString *)imageName;
++ (void)storeImageinCache:(UIImage *)image withName:(NSString *)imageName;
+
 @end

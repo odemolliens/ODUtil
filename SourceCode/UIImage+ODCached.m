@@ -289,7 +289,8 @@ static NSCache *_imageCache = nil;
     }
 }
 
-+ (NSCache *)currentCacheImage {
++ (NSCache *)currentCacheImage
+{
     if(_imageCache==nil) {
         
         _imageCache = [[NSCache alloc] init];
@@ -299,13 +300,15 @@ static NSCache *_imageCache = nil;
     return [[_imageCache retain] autorelease];
 }
 
-+ (UIImage *)imageFromCacheWithName:(NSString *)imageName {
++ (UIImage *)imageFromCacheWithName:(NSString *)imageName
+{
     NSCache *currentCacheImage = [UIImage currentCacheImage];
     
     return [currentCacheImage objectForKey:imageName];
 }
 
-+ (void)storeImageinCache:(UIImage *)image withName:(NSString *)imageName {
++ (void)storeImageinCache:(UIImage *)image withName:(NSString *)imageName
+{
     NSCache *currentCacheImage = [UIImage currentCacheImage];
     
     CGSize imageSize = [image size];
